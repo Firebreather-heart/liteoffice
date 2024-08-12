@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,16 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+
+
 require __DIR__.'/auth.php';
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+// Authentication Routes...
+Route::get('register',[RegisterController::class, 'showregform'])->name('register');
+Route::post('register',[RegisterController::class, 'register']);

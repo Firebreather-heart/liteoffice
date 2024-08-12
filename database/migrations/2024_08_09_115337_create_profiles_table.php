@@ -14,6 +14,18 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            //Foreign keys
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('business_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('employer_id')->nullable()->constrained()->cascadeOnDelete();
+
+            //other columns
+            $table->string('avatar')->nullable();
+            $table->string('about')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->date('date_of_birth');
         });
     }
 
