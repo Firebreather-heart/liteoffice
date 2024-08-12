@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('business_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('name');
+            $table->string('description');
+            $table->string('price')->nullable();
+            $table->integer('quantity')->default(0);
+            $table->string('image')->nullable();
+            $table->string('item_type');
         });
     }
 

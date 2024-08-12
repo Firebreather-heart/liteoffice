@@ -15,6 +15,7 @@ class BusinessItem extends Model
         'price',
         'quantity',
         'image',
+        'item_type',
     ];
 
     const ITEM_TYPE_CATALOG = 'Catalog';

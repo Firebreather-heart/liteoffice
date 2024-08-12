@@ -14,6 +14,16 @@ return new class extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->string('address');
+            $table->string('description');
+            $table->string('type');
+            $table->string('logo')->nullable();
+            $table->string('coordinates')->nullable();
+            $table->string('cover_photo')->nullable();
         });
     }
 

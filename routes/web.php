@@ -37,3 +37,12 @@ Route::group(['prefix' => 'admin'], function () {
 // Authentication Routes...
 Route::get('register',[RegisterController::class, 'showregform'])->name('register');
 Route::post('register',[RegisterController::class, 'register']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
