@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class OfficeRole extends Model
 {
     use HasFactory;
 
@@ -24,6 +24,6 @@ class Role extends Model
     }
 
     public function business(){
-        return $this->hasOne(Business::class, 'business_role');
+        return $this->hasOne(Business::class, );
     }
 }

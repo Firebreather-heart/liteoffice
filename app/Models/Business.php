@@ -38,6 +38,10 @@ class Business extends Model
     }
 
     public function role(){
-        return $this->hasMany(Role::class);
+        return $this->hasMany(OfficeRole::class);
     }
+
+    public function permissions(){
+        return $this->hasMany(OfficePermission::class);
+    }   
 }
