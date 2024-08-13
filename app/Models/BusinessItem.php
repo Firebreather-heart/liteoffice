@@ -42,6 +42,6 @@ class BusinessItem extends Model
     }
 
     public function office_permissions(){
-        return $this->hasMany(OfficePermission::class, 'business_items_permissions');
+        return $this->hasMany(OfficePermission::class);
     }
 }

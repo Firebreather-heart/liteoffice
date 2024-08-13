@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('office_roles', function (Blueprint $table) {
+        Schema::table('office_permissions', function (Blueprint $table) {
             $table->foreignId('business_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('business_item_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -21,8 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('office_roles', function (Blueprint $table) {
+        Schema::table('office_permissions', function (Blueprint $table) {
             $table->dropForeign(['business_id']);
+            $table->dropForeign(['role_id']);
+            $table->dropForeign(['business_item_id']);
         });
     }
 };

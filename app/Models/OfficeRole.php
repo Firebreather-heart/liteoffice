@@ -16,11 +16,11 @@ class OfficeRole extends Model
     ];
 
     public function permissions(){
-        return $this->belongsToMany(Permission::class, 'role_permission');
+        return $this->hasMany(OfficePermission::class);
     }
 
     public function employees(){
-        return $this->hasMany(Employee::class, 'employee_role');
+        return $this->belongsToMany(Employee::class, 'employee_role');
     }
 
     public function business(){

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->foreignId('business_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('office_role_id')->constrained()->cascadeOnDelete();
         });
     }
 
