@@ -29,9 +29,15 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/admin/login/', [App\Http\Controllers\AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/login/', [App\Http\Controllers\AdminController::class, 'authenticate']);
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/login/', [App\Http\Controllers\AdminController::class, 'login'])->name('admin.login');
-    Route::post('/admin/login/', [App\Http\Controllers\AdminController::class, 'authenticate']);
+    Route::get('/admin/users/', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
+    Route::get('/admin/users/create/', [App\Http\Controllers\AdminController::class, 'create_user'])->name('admin.users.create');
+    Route::post('/admin/users/create/', [App\Http\Controllers\AdminController::class, 'store_user']);
+    Route::patch('/admin/users/{user}/edit/', [App\Http\Controllers\AdminController::class, 'edit_user'])->name('admin.users.edit');
+    Route::delete('/admin/users/{user}/delete/', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.users.delete');
 });
 

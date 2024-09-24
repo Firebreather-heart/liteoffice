@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use TCG\Voyager\Models\Role;
 
 
 class User extends Authenticatable
@@ -29,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -68,5 +68,30 @@ class User extends Authenticatable
         }
         $this->role_id = $role->id;
         $this->save();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
+    public function assignRole($role)
+    {
+        $this->roles()->attach($role);
+    }
+
+    public function removeRole($role)
+    {
+        $this->roles()->detach($role);
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
     }
 }
