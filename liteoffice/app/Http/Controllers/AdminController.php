@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -28,14 +29,16 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            if (Auth::user()->role == 'admin') {
+            if (Auth::user()->hasRole('admin')) {
+                \Log::info('user '. $credentials['email']. ' logged in');
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
-                return redirect()->route('admin.login')->with('error', 'You are not an admin');
+                \Log::warning('Failed non-admin user, Admin login attempt');
+                return redirect()->route('admin.login')->withErrors('You are not an admin');
             }
         } else {
-            return redirect()->route('admin.login')->with('error', 'Invalid credentials');
+            return redirect()->route('admin.login')->withErrors('Invalid credentials');
         }
     }
 
@@ -44,6 +47,11 @@ class AdminController extends Controller
         $users = User::all();
 
         return view('admin.users.all', compact('users'));
+    }
+
+    public function profiles(){
+        $profiles = Profile::all();
+        return view('admin.users.profiles', compact('profiles'));
     }
 
     public function create_user()
@@ -89,7 +97,7 @@ class AdminController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('admin.users.all')->with('success', 'User deleted successfully');
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully');
     }
 
 }

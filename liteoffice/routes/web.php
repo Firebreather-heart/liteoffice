@@ -38,6 +38,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/users/create/', [App\Http\Controllers\AdminController::class, 'create_user'])->name('admin.users.create');
     Route::post('/admin/users/create/', [App\Http\Controllers\AdminController::class, 'store_user']);
     Route::patch('/admin/users/{user}/edit/', [App\Http\Controllers\AdminController::class, 'edit_user'])->name('admin.users.edit');
-    Route::delete('/admin/users/{user}/delete/', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.users.delete');
+    Route::delete('/admin/users/{user}/delete/', [App\Http\Controllers\AdminController::class, 'destroy_user'])->name('admin.users.delete');
+    Route::get('/profiles', [App\Http\Controllers\AdminController::class, 'profiles'])->name('admin.profiles');
 });
 

@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
         ]);
 
-        $userEmail = 'fbc@gmail.com';
+        $userEmail = 'lfbps@gmail.com';
         Log::info("Looking for user with email {$userEmail}.");
 
         try {
             $user = User::where('email', $userEmail)->first();
             if ($user) {
-                Log::info("User with email {$userEmail} found.");
+                Log::info("User with email {$user->email} found.");
                 $adminRole = Role::where('name', 'admin')->first();
                 if ($adminRole) {
                     Log::info("Admin role found.");

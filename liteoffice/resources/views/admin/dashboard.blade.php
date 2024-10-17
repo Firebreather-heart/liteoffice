@@ -40,15 +40,15 @@
                             <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6"></path>
+                                    d="M5.121 17.804A7.5 7.5 0 1116.88 6.196a7.5 7.5 0 01-11.758 11.608z"></path>
                             </svg>
-                            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">View Reports</div>
+                            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">See Profiles</div>
+                            <div class="ml-12">
+                                <a href="{{ route('admin.profiles') }}" class="text-indigo-600 hover:text-indigo-900">
+                                    Go to Profiles
+                                </a>
+                            </div>
                         </div>
-                        {{-- <div class="ml-12">
-                            <a href="{{ route('admin.reports.index') }}" class="text-indigo-600 hover:text-indigo-900">
-                                Go to Reports
-                            </a>
-                        </div> --}}
                     </div>
 
                     <div class="p-6 bg-white rounded-lg shadow-md">
@@ -56,18 +56,35 @@
                             <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4"></path>
+                                    d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6"></path>
                             </svg>
-                            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Configure Settings</div>
+                            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">View Reports</div>
                         </div>
                         {{-- <div class="ml-12">
-                            <a href="{{ route('admin.settings.index') }}" class="text-indigo-600 hover:text-indigo-900">
-                                Go to Settings
-                            </a>
-                        </div> --}}
-                    </div>
+                            <a href="{{ route('admin.reports.index') }}" class="text-indigo-600 hover:text-indigo-900">
+                        Go to Reports
+                        </a>
+                    </div> --}}
                 </div>
+
+                <div class="p-6 bg-white rounded-lg shadow-md">
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
+                            </path>
+                        </svg>
+                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Configure Settings</div>
+                    </div>
+                    {{-- <div class="ml-12">
+                            <a href="{{ route('admin.settings.index') }}" class="text-indigo-600
+                    hover:text-indigo-900">
+                    Go to Settings
+                    </a>
+                </div> --}}
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </x-app-layout>
