@@ -22,7 +22,8 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
+    // 'verified',
+    'check.profile',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -42,3 +43,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/profiles', [App\Http\Controllers\AdminController::class, 'profiles'])->name('admin.profiles');
 });
 
+//Profiles
+Route::middleware(
+    [
+        'auth:sanctum',
+    ]
+)->group(function () {
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/edit', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/create', [App\Http\Controllers\ProfileController::class, 'save'])->name('profile.save');
+});

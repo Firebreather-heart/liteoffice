@@ -21,11 +21,11 @@
                     autocomplete="username" />
             </div>
 
-            <div class="mt-4">
+            {{-- <div class="mt-4">
                 <x-label for="dob" value="{{ __('date_of_birth') }}" />
                 <x-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required
                     autocomplete="date_of_birth" />
-            </div>  
+            </div>   --}}
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />

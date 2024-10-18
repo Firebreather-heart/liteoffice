@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use App\Events\UserRegistered;
+use App\Models\Profile;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -18,8 +20,10 @@ class CreateUserProfile
     /**
      * Handle the event.
      */
-    public function handle(object $event): void
+    public function handle(UserRegistered $event): void
     {
-        //
+        Profile::create([
+            'user_id' => $event->user->id,
+        ]);
     }
 }
