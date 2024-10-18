@@ -34,7 +34,7 @@ class AdminController extends Controller
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
-                \Log::warning('Failed non-admin user, Admin login attempt');
+                \Log::warning('Failed non-admin user, Admin login attempt by ' . $credentials['email']);
                 return redirect()->route('admin.login')->withErrors('You are not an admin');
             }
         } else {

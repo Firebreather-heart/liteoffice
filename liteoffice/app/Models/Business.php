@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Business extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
     protected $fillable = [
         'name',
         'email',
@@ -20,6 +21,10 @@ class Business extends Model
         'cover_photo',
         'owner_id',
     ];
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $primaryKey = 'id';
 
     public function profile(){
         return $this->hasOne(Profile::class);

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class OfficeRole extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'name',
@@ -15,6 +16,10 @@ class OfficeRole extends Model
         'business_id',
     ];
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $primaryKey = 'id';
+    
     public function permissions(){
         return $this->hasMany(OfficePermission::class);
     }

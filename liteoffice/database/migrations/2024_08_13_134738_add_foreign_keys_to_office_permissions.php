@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('office_permissions', function (Blueprint $table) {
-            $table->foreignId('business_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('office_role_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('business_item_id')->constrained()->cascadeOnDelete();
+            $table->uuid('business_id')->constrained()->cascadeOnDelete();
+            $table->uuid('office_role_id')->constrained()->cascadeOnDelete();
+            $table->uuid('business_item_id')->constrained()->cascadeOnDelete();
         });
     }
 

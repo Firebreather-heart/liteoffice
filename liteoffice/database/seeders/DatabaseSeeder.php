@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // Uncomment the following line if AdminUserSeeder is needed
             // AdminUserSeeder::class,
-            RolesTableSeeder::class,
-            PermissionsTableSeeder::class,
+            // RolesTableSeeder::class,
+            // PermissionsTableSeeder::class,
         ]);
 
         $userEmail = 'lfbps@gmail.com';
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 $adminRole = Role::where('name', 'admin')->first();
                 if ($adminRole) {
                     Log::info("Admin role found.");
-                    $user->roles()->attach($adminRole);
+                    $user->roles()->attach($adminRole->id);
                     Log::info("User with email {$userEmail} has been granted the 'admin' role.");
                 } else {
                     Log::info("Admin role not found.");

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Exception;
 
 class BusinessItem extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
     protected $fillable = [
         'business_id',
         'name',
@@ -19,6 +20,10 @@ class BusinessItem extends Model
         'item_type',
     ];
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $primaryKey = 'id';
+    
     const ITEM_TYPE_CATALOG = 'Catalog';
     const ITEM_TYPE_DOCUMENT = 'Document';
 
